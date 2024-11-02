@@ -6,6 +6,8 @@ begin
   declare total_records int default 10000000;
   declare i int default 1;
 
+  set foreign_key_checks = 0;
+
   while i <= total_records do
     set @sql = 'insert into customers (first_name, last_name, email) values ';
     set @values = '';
@@ -36,6 +38,8 @@ begin
 
     set i = i + batch_size;
   end while;
+
+  set foreign_key_checks = 1;
 
 end $$
 delimiter ;

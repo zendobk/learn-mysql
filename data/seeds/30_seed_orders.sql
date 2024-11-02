@@ -6,6 +6,8 @@ begin
   declare total_records int default 10000000;
   declare i int default 1;
 
+  set foreign_key_checks = 0;
+
   while i <= total_records do
     set @sql = 'insert into orders (customer_id, total) values ';
     set @values = '';
@@ -36,6 +38,8 @@ begin
     set i = i + batch_size;
   end while;
 
+  set foreign_key_checks = 1;
+
 end $$
 delimiter ;
 
@@ -49,6 +53,8 @@ begin
   declare batch_size int default 5000;
   declare total_records int default 10000000;
   declare i int default 1;
+
+  set foreign_key_checks = 0;
 
   while i <= total_records do
     set @sql = 'insert into order_items (order_id, product_id, quantity, price) values ';
@@ -83,6 +89,8 @@ begin
 
     set i = i + batch_size;
   end while;
+
+  set foreign_key_checks = 1;
 
 end $$
 delimiter ;
