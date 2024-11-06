@@ -10,6 +10,8 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./data/seeds:/docker-entrypoint-initdb.d
+      # - ./data/dump/sql-files:/docker-entrypoint-initdb.d
+      # - ./data/dump/csv-files-10m:/docker-entrypoint-initdb.d/csv-files
     ports:
       - "3306:3306"
 
