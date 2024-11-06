@@ -14,9 +14,9 @@ begin
     set @j = 1;
 
     while @j <= batch_size do
-      set @first_name = concat('first', i);
-      set @last_name = concat('last', i);
-      set @email = concat('email', i, '@example.com');
+      set @first_name = concat('first', @j);
+      set @last_name = concat('last', @j);
+      set @email = concat('email', @j, '@example.com');
       set @values = concat(@values, '(',
         '"', @first_name,'", ',
         '"', @last_name, '", ',

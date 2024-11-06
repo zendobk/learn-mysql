@@ -14,8 +14,8 @@ begin
     set @j = 1;
 
     while @j <= batch_size do
-      set @name = concat('product', i);
-      set @description = 'description of product';
+      set @name = concat('product', @j);
+      set @description = concat('description of product', @j);
       set @price = round(rand() * 100, 2);
       set @values = concat(@values, '(',
       '"', @name, '", ',
